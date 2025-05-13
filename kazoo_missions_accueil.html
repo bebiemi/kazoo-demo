@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Missions – Kazoo</title>
+  <link rel="icon" type="image/x-icon" href="assets/kazoo_favicon_rounded.ico">
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #fffef6; }
+    header, .sidebar, footer { background: #ffa726; color: white; }
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      padding: 10px 20px; display: flex;
+      justify-content: space-between; align-items: center;
+      z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    header img { height: 40px; }
+    .header-links a {
+      color: white; margin-left: 20px;
+      text-decoration: none; font-weight: bold;
+    }
+    .sidebar {
+      width: 220px; position: fixed;
+      top: 60px; bottom: 0; left: 0;
+      padding-top: 30px;
+    }
+    .sidebar a {
+      display: block; padding: 15px 20px;
+      color: white; text-decoration: none;
+      font-weight: bold;
+    }
+    .main {
+      margin-left: 240px; padding: 100px 30px 30px 30px;
+    }
+    h1 { color: #fb8c00; }
+
+    .filters {
+      background: #fff3e0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    select, button {
+      margin: 8px; padding: 6px;
+      border-radius: 5px;
+    }
+
+    .mission {
+      background: white; padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px #ccc;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mission:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #333;
+    }
+
+    @media (max-width: 768px) {
+      .main { margin-left: 0; padding: 100px 15px; }
+      .sidebar { display: none; }
+      .modal-content {
+        width: 90%;
+        margin-top: 10%;
+      }
+    }
+
+    .modal-content h2 { color: #fb8c00; margin-top: 0; }
+    .modal-content button {
+      background-color: #fb8c00;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="assets/kazoo-logo-transparent.png" alt="Kazoo Logo" />
+  <div class="header-links">
+    <a href="#">Services</a>
+    <a href="#">Actualités</a>
+    <a href="#">Nous contacter</a>
+  </div>
+</header>
+
+<div class="sidebar">
+  <a href="#">Accueil</a>
+  <a href="#">Mes missions</a>
+  <a href="#">Historique</a>
+  <a href="#">Profil</a>
+</div>
+
+<div class="main">
+  <h1>Liste des missions Kazoo</h1>
+  <div class="mission" onclick="openModal('Ménage – Libreville', '18 mai 2025 – Nettoyage complet d’un appartement T3.', 'Mme Essono – Premium – 4.8/5')">
+    <h2>Ménage T3 – Libreville</h2>
+    <p>18 mai 2025 – 2h</p>
+  </div>
+
+  <div class="mission" onclick="openModal('Repassage – Akanda', '19 mai 2025 – Repassage tenues traditionnelles.', 'M. Boussougou – Nouveau – 5.0/5')">
+    <h2>Repassage cérémonies – Akanda</h2>
+    <p>19 mai 2025 – 1h30</p>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+    <p id="modalClient"></p>
+    <button>Postuler</button>
+  </div>
+</div>
+
+<footer>
+  Kazoo – Une solution Awana Group - Services | © 2025 – Tous droits réservés
+  <div class="socials">
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  function openModal(title, text, client) {
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalText").innerText = text;
+    document.getElementById("modalClient").innerText = client;
+    document.getElementById("modal").style.display = "block";
+  }
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+  window.onclick = function(e) {
+    if (e.target === document.getElementById("modal")) closeModal();
+  };
+</script>
+
+</body>
+</html>
